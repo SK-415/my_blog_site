@@ -25,7 +25,7 @@ SECRET_KEY = '&@(k014k3d273xrb_$0gh0o2z44pa)r%$1-28hs!cp(%p9e-6p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.sk415.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'article'
+    'article',
+    'userprofile',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')

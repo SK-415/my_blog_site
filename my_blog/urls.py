@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import redirect_blog_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/', include('article.urls', namespace='article')),
+    path('', redirect_blog_list),
+    path('userprofile/', include('userprofile.urls', namespace='userprofile')),
 ]
