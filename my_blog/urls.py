@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import redirect_blog_list
+from .views import redirect_blog_list, baidu_verify
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/', include('article.urls', namespace='article')),
     path('', redirect_blog_list),
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
+    path('baidu_verify_W1nBs3ybAH.html', baidu_verify)
 ]
