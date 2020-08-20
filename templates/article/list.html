@@ -8,6 +8,11 @@
 {% block content %}
 
 <div class="container">
+    <div class="col-12">
+        <br>
+        <h5>PS：刚开始学网站，移动端还不会适配（别骂了别骂了，在学了）</h5>
+        <br>
+    </div>
     <div class="row mt-2">
 
         {% for article in articles %}
@@ -18,12 +23,55 @@
                     <p class="card-text">{{ article.body|slice:'100' }}...</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">阅读本文</a>
+                    <a href="{% url 'article:article_detail' article.id %}"
+                        class="btn btn-primary">
+                        阅读本文
+                    </a>
+
+                    <span>
+                        <small class="col align-self-end" style="color: gray;">
+                        浏览：{{ article.total_views }}</small>
+                    </span>
                 </div>
             </div>
         </div>
         {% endfor %}
 
+    </div>
+    <div class="pagination row">
+        <div class="m-auto">
+            <span class="step-links">
+                {% if articles.has_previous %}
+                    <a href="?page=1" class="btn btn-success">
+                        &laquo; 1
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.previous_page_number }}"
+                        class="btn btn-secondary"
+                    >
+                        {{ articles.previous_page_number }}
+                    </a>
+                {% endif %}
+
+                <span class="current btn btn-danger btn-lg">
+                    {{ articles.number }}
+                </span>
+
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}"
+                        class="btn btn-secondary"
+                    >
+                        {{ articles.next_page_number }}
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.paginator.num_pages }}"
+                        class="btn btn-success"
+                    >
+                        {{ articles.paginator.num_pages }} &raquo;
+                    </a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </div>
 {% endblock content %}
